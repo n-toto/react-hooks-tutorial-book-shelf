@@ -1,2 +1,3 @@
-# React Hooks チュートリアル（スターター）
-チュートリアルのステップ1から開始するためのスタータープロジェクトです。
+# react-hooks-tutorial-book-shelf
+[react-hooks-typescript tutorial](https://qiita.com/yonetty/items/ad19bddc26806bb49cef)
+
