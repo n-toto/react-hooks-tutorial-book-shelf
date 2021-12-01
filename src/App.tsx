@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Modal from "react-modal";
 import "./App.css";
 import { BookToRead } from "./BookToRead";
@@ -23,9 +23,22 @@ const customStyles = {
   }
 }
 
+const APP_KEY = "react-hooks-tutorial";
+
 const App = () => {
   const [books, setBooks] = useState([] as BookToRead[]);
   const [modalIsOpen, setModalIsOpen] = useState(false);
+
+  useEffect(() => {
+    const storedBooks = localStorage.getItem(APP_KEY);
+    if (storedBooks) {
+      setBooks(JSON.parse(storedBooks));
+    }
+  }, []); // 空配列を渡すのは初回レンダリング時に一度だけ実行すれば良いから
+
+  useEffect(() => {
+    localStorage.setItem(APP_KEY, JSON.stringify(books));
+  }, [books]);
 
   const handleBookDelete = (id: number) => {
     const newBooks = books.filter((b) => b.id !== id);
